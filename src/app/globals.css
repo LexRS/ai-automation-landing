@@ -8,6 +8,7 @@
   --accent-hover: #818cf8;
   --text: #e5e7eb;
   --muted: #9ca3af;
+  
 }
 
 body {
@@ -22,21 +23,37 @@ body {
   padding: 0 24px;
 }
 
-/* Убрали @apply, написали обычный CSS */
+/* Градиентная кнопка с glow */
 .btn-primary {
   display: inline-block;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 12px 28px;
+  border-radius: 10px;
   font-weight: 600;
-  transition: background 0.2s;
-  background: var(--accent);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
   color: white;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Карточка с акцентной левой полосой и glow при наведении */
+.card-accent {
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, var(--accent), transparent) 1;
+}
+.card-accent:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.12);
+}
+
+/* Базовый card тоже с transition */
+.card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section {
@@ -49,4 +66,24 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px;
+}
+
+/* Компактные иконки-кнопки в шапке */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0; /* Запрещаем сжиматься */
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: all 0.2s ease;
+  background: transparent;
+}
+.icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
 }
